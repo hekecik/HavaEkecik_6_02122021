@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.use('/api/sauce', sauceRoutes);
+app.use('/api/sauces', sauceRoutes);
 //'Le début de la route', on utilise le router de sauceRoutes
 app.use('/api/auth', userRoutes);
 

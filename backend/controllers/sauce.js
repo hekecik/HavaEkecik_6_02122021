@@ -2,10 +2,12 @@ const Sauce = require('../models/Sauce');
 const fs = require("fs");
 
 exports.createSauce = (req, res, next) => {
-    const sauceObject = JSON.parse(req.body.thing);
+    const sauceObject = JSON.parse(req.body.sauce);
+    console.log(sauceObject);
+    
     delete sauceObject._id;
     const sauce = new Sauce({
-        ...thingObject,
+        ...sauceObject,
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
     sauce.save()
