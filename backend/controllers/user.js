@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 
 exports.signup = (req, res, next) => {
-//   const hashedEmail = cryptojs.HmacSHA256(req.body.email, process.env.SECRET_CRYPTOJS_TOKEN).toString();
+//   const hashedEmail = cryptojs.HmacSHA256(req.body.email, KEY).toString();
   bcrypt
     .hash(req.body.password, 10)
     .then(hash => {
@@ -22,7 +22,7 @@ exports.signup = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 exports.login = (req, res, next) => {
-    // const hashedEmail = cryptojs.HmacSHA256(req.body.email, process.env.SECRET_CRYPTOJS_TOKEN).toString();
+    // const hashedEmail = cryptojs.HmacSHA256(req.body.email, KEY).toString();
     User.findOne({ email: req.body.email })
         .then(user => {
             if (!user) {
